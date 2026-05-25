@@ -1,6 +1,8 @@
 """
 main.py - Segun Banji Data Science Portfolio entrypoint.
 """
+import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -17,7 +19,10 @@ custom_hdrs = (
     Script(src="/assets/js/main.js", defer=True),
 )
 
-app = FastHTML(hdrs=custom_hdrs)
+app = FastHTML(
+    hdrs=custom_hdrs,
+    secret_key=os.getenv("FASTHTML_SECRET_KEY", "banjisegun-portfolio-static-site"),
+)
 
 add_bootstrap(
     app,

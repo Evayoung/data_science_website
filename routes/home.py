@@ -286,22 +286,16 @@ def _video_teaser_cards() -> Row:
             Col(
                 Div(
                     Div(
-                        Div(
-                            cls="position-absolute top-0 start-0 w-100 h-100",
-                            style=(
-                                "background:linear-gradient(135deg,#1a1a1a,#2a2318);"
-                                "display:flex;align-items:center;justify-content:center;"
-                            ),
-                        ),
+                        Div(cls="portfolio-video-thumb-bg"),
                         A(
-                            Icon("play-circle-fill", style="font-size:3rem;color:#C9A84C;"),
+                            Icon("play-circle-fill"),
                             href=f"https://www.youtube.com/watch?v={v['video_id']}",
                             target="_blank",
-                            cls="position-absolute top-50 start-50 translate-middle",
-                            style="z-index:1;",
+                            rel="noopener noreferrer",
+                            cls="portfolio-video-play",
+                            aria_label=f"Watch {v['title']} on YouTube",
                         ),
-                        cls="ratio ratio-16x9 position-relative",
-                        style="background:#1a1a1a;",
+                        cls="ratio ratio-16x9 portfolio-video-thumb",
                     ),
                     Div(
                         H3(v["title"], cls="fs-6 fw-bold mb-1"),

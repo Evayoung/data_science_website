@@ -132,9 +132,9 @@ EXPERIENCE = [
 # ---------------------------------------------------------------------------
 EDUCATION = [
     {
-        "degree": "B.Sc. Computer Science",
-        "institution": "University (Nigeria)",
-        "year": "2017",
+        "degree": "B.Sc. Statistics",
+        "institution": "University of Ilorin (Nigeria)",
+        "year": "2019",
     },
 ]
 

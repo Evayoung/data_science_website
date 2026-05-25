@@ -33,7 +33,7 @@ def _bio_section() -> Section:
                     A(
                         Icon(sl["icon"]),
                         href=sl["href"],
-                        cls="portfolio-social-icon me-2",
+                        cls="portfolio-social-icon portfolio-social-icon-light me-2",
                         target="_blank",
                         rel="noopener noreferrer",
                         aria_label=sl["label"],
@@ -156,10 +156,11 @@ def _experience_education_section() -> Section:
     cert_items = [
         ListGroupItem(
             Div(
-                Icon("check-circle-fill", cls="text-warning me-2"),
-                cert,
+                Icon("check-circle-fill", cls="portfolio-cert-icon"),
+                Span(cert, cls="portfolio-cert-text"),
+                cls="d-flex align-items-start gap-2",
             ),
-            cls="border-0 px-0 py-1 bg-transparent",
+            cls="portfolio-cert-item",
         )
         for cert in CERTIFICATIONS
     ]
@@ -168,7 +169,7 @@ def _experience_education_section() -> Section:
         H3("Education", cls="fw-bold mb-4 text-dark"),
         *edu_cards,
         H3("Certifications", cls="fw-bold mt-5 mb-3 text-dark"),
-        ListGroup(*cert_items, cls="list-group-flush"),
+        ListGroup(*cert_items, cls="portfolio-cert-list"),
         span=12, lg=6,
     )
 

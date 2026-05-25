@@ -270,6 +270,20 @@ h1, h2, h3, h4, h5, h6 {
   border-color: var(--gold);
 }
 
+.portfolio-social-icon-light {
+  color: var(--black);
+  background: #ffffff;
+  border-color: var(--gold-border);
+  box-shadow: 0 8px 18px rgba(17,17,17,0.06);
+}
+
+.portfolio-social-icon-light:hover,
+.portfolio-social-icon-light:focus-visible {
+  color: var(--black);
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
 /* ============================================================
    Profile Photo
 ============================================================ */
@@ -587,6 +601,39 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-dark-muted);
 }
 
+/* Certifications */
+.portfolio-cert-list {
+  border: 1px solid #e4dac6;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 14px 32px rgba(17,17,17,0.07);
+}
+
+.portfolio-cert-item {
+  padding: 0.85rem 1rem;
+  border: 0;
+  border-bottom: 1px solid #eee6d7;
+  background: #ffffff;
+  color: var(--black);
+}
+
+.portfolio-cert-item:last-child {
+  border-bottom: 0;
+}
+
+.portfolio-cert-icon {
+  color: var(--gold);
+  font-size: 1.05rem;
+  margin-top: 0.12rem;
+  flex-shrink: 0;
+}
+
+.portfolio-cert-text {
+  color: var(--black);
+  line-height: 1.45;
+}
+
 /* ============================================================
    Works Filter Tabs
 ============================================================ */
@@ -895,6 +942,38 @@ h1, h2, h3, h4, h5, h6 {
 .portfolio-video-card:hover {
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   border-color: var(--gold-border);
+}
+
+.portfolio-video-thumb {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.portfolio-video-thumb-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1a1a1a, #2a2318);
+}
+
+.portfolio-video-play {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 3.4rem;
+  line-height: 1;
+  text-decoration: none;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.portfolio-video-play:hover,
+.portfolio-video-play:focus-visible {
+  color: #e0bd52;
+  transform: scale(1.04);
 }
 
 .portfolio-detail-card {

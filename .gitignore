@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.Python
+
+.env
+.env.*
+!.env.example
+.sesskey
+
+.venv/
+venv/
+
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+.vercel/

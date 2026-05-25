@@ -1,0 +1,943 @@
+/* =============================================================================
+   style.css — Segun Banji Data Science Portfolio
+   Bootstrap utilities handle all layout/grid/flex/spacing/responsive.
+   This file is brand atmosphere, surface treatment, and polish only.
+============================================================================= */
+
+/* ============================================================
+   Brand Tokens
+============================================================ */
+:root {
+  --gold: #C9A84C;
+  --gold-muted: rgba(201, 168, 76, 0.25);
+  --gold-border: rgba(201, 168, 76, 0.6);
+  --black: #111111;
+  --off-white: #F5F0E8;
+  --text-dark-muted: rgba(255, 255, 255, 0.65);
+  --text-light-muted: #6B6B6B;
+  --transition-fast: 0.22s ease;
+  --transition-med: 0.36s ease;
+  --nav-height: 68px;
+}
+
+/* ============================================================
+   Typography Polish
+============================================================ */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #111111;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.18;
+}
+
+.text-gold { color: var(--gold) !important; }
+.text-muted-dark { color: var(--text-dark-muted) !important; }
+
+/* Hero headline */
+.portfolio-hero-name {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.portfolio-hero-title {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+}
+
+.portfolio-section-heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #111111;
+}
+
+.portfolio-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ============================================================
+   Navbar
+============================================================ */
+.portfolio-nav {
+  background: var(--black) !important;
+  border-bottom: 1px solid var(--gold-border);
+  min-height: var(--nav-height);
+  z-index: 1030;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.portfolio-nav .nav-link {
+  color: rgba(255, 255, 255, 0.80) !important;
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 0.5rem 0.85rem !important;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.portfolio-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0.85rem;
+  right: 0.85rem;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform var(--transition-fast);
+  border-radius: 1px;
+}
+
+.portfolio-nav .nav-link:hover {
+  color: var(--gold) !important;
+}
+
+.portfolio-nav .nav-link:hover::after,
+.portfolio-nav .nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.portfolio-nav .nav-link.active {
+  color: var(--gold) !important;
+  font-weight: 600;
+}
+
+/* Brand badge */
+.portfolio-brand-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--black);
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.portfolio-brand-text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  margin-left: 0.55rem;
+}
+
+.portfolio-nav .navbar-toggler {
+  border-color: var(--gold-border);
+}
+
+.portfolio-nav .navbar-toggler-icon {
+  filter: brightness(0) saturate(100%) invert(81%) sepia(40%) saturate(600%) hue-rotate(5deg);
+}
+
+/* ============================================================
+   Dark Section Surfaces
+============================================================ */
+.section-dark {
+  background: var(--black);
+  color: #ffffff;
+}
+
+.section-off-white {
+  background: var(--off-white);
+  color: var(--black);
+}
+
+.section-white {
+  background: #ffffff;
+  color: var(--black);
+}
+
+.section-white .text-muted,
+.section-off-white .text-muted,
+.portfolio-cv-main .text-muted,
+.portfolio-project-card .text-muted,
+.portfolio-video-card .text-muted,
+.portfolio-spec-card .text-muted,
+.portfolio-detail-card .text-muted {
+  color: #555555 !important;
+}
+
+.section-white .text-dark,
+.section-off-white .text-dark,
+.portfolio-project-card,
+.portfolio-video-card,
+.portfolio-spec-card,
+.portfolio-detail-card,
+.portfolio-cv-main {
+  color: var(--black) !important;
+}
+
+/* Subtle gold divider line */
+.gold-divider {
+  border: none;
+  border-top: 1px solid var(--gold-border);
+  opacity: 1;
+}
+
+/* ============================================================
+   Hero Section
+============================================================ */
+.portfolio-hero {
+  background:
+    linear-gradient(90deg, rgba(17,17,17,0.80) 0%, rgba(17,17,17,0.74) 44%, rgba(17,17,17,0.60) 100%),
+    linear-gradient(180deg, rgba(17,17,17,0.7), rgba(17,17,17,0.80)),
+    url("/assets/images/projects/mcmoren-dashboard.jpg") center right / cover no-repeat;
+  padding-top: calc(var(--nav-height) + 4rem);
+  padding-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-hero::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Availability pulse badge */
+.portfolio-pulse-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 99px;
+}
+
+.pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+  animation: pulse-glow 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+  50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+}
+
+/* Social icon row */
+.portfolio-social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-border);
+  color: var(--text-dark-muted);
+  font-size: 1.05rem;
+  transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+  text-decoration: none;
+}
+
+.portfolio-social-icon:hover {
+  color: var(--black);
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+/* ============================================================
+   Profile Photo
+============================================================ */
+.portfolio-profile-photo {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  box-shadow: 0 0 0 6px rgba(201,168,76,0.15);
+}
+
+@media (max-width: 767px) {
+  .portfolio-profile-photo {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/* ============================================================
+   Showcase Carousel
+============================================================ */
+.portfolio-showcase-carousel .carousel-inner {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.portfolio-showcase-carousel .carousel-item img {
+  height: 460px;
+  object-fit: cover;
+  filter: brightness(0.75);
+}
+
+.portfolio-showcase-carousel .carousel-caption {
+  background: linear-gradient(to top, rgba(17,17,17,0.9) 0%, transparent 100%);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1.5rem 1.5rem;
+  text-align: left;
+  border-radius: 0 0 12px 12px;
+}
+
+.portfolio-showcase-carousel .carousel-control-prev,
+.portfolio-showcase-carousel .carousel-control-next {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(17,17,17,0.75);
+  border: 1px solid var(--gold-border);
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: auto;
+  margin: 0 0.75rem;
+  opacity: 1;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.portfolio-showcase-carousel .carousel-control-prev:hover,
+.portfolio-showcase-carousel .carousel-control-next:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.portfolio-showcase-carousel .carousel-control-prev-icon,
+.portfolio-showcase-carousel .carousel-control-next-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+/* ============================================================
+   Stat Cards
+============================================================ */
+.portfolio-stat-card {
+  background: rgba(201,168,76,0.06);
+  border: 1px solid var(--gold-muted);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.portfolio-stat-card:hover {
+  background: rgba(201,168,76,0.12);
+  border-color: var(--gold-border);
+}
+
+.portfolio-stat-value {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.portfolio-stat-label {
+  font-size: 0.82rem;
+  color: var(--text-dark-muted);
+  font-weight: 500;
+  margin-top: 0.35rem;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   Skills Pills
+============================================================ */
+.portfolio-skill-pill {
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.35rem 0.85rem;
+  border-radius: 99px;
+  background: #2a2924 !important;
+  color: var(--off-white) !important;
+  border: 1px solid var(--gold-border) !important;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  cursor: default;
+}
+
+.portfolio-skill-pill:hover {
+  background: var(--gold) !important;
+  color: var(--black) !important;
+  border-color: var(--gold) !important;
+}
+
+/* Dark surface variant */
+.section-dark .portfolio-skill-pill {
+  color: var(--off-white) !important;
+}
+
+.section-dark .portfolio-skill-pill:hover {
+  color: var(--black);
+}
+
+/* ============================================================
+   Page Banner (inner pages)
+============================================================ */
+.portfolio-page-banner {
+  background: var(--black);
+  padding: 4rem 0 2.5rem;
+  border-bottom: 1px solid var(--gold-border);
+}
+
+.portfolio-page-banner h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.portfolio-page-banner .breadcrumb {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.portfolio-page-banner .breadcrumb-item,
+.portfolio-page-banner .breadcrumb-item a {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.82rem;
+  text-decoration: none;
+}
+
+.portfolio-page-banner .breadcrumb-item.active {
+  color: var(--gold);
+}
+
+.portfolio-page-banner .breadcrumb-item + .breadcrumb-item::before {
+  color: var(--gold);
+  content: "/";
+}
+
+/* ============================================================
+   Card & Surface Treatment
+============================================================ */
+.portfolio-spec-card {
+  border-top: 3px solid var(--gold) !important;
+  border-radius: 10px;
+  background: #ffffff;
+  transition: transform var(--transition-med), box-shadow var(--transition-med);
+}
+
+.portfolio-spec-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+}
+
+/* Project cards */
+.portfolio-project-card {
+  border: 1px solid #e8e3d8;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-fast);
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #ffffff;
+}
+
+.portfolio-project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  border-color: var(--gold-border);
+  color: inherit;
+}
+
+.portfolio-project-img-wrap {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.portfolio-project-img-wrap img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-med), filter var(--transition-med);
+}
+
+.portfolio-project-card:hover .portfolio-project-img-wrap img {
+  transform: scale(1.04);
+  filter: brightness(0.7);
+}
+
+.portfolio-project-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+.portfolio-project-card:hover .portfolio-project-overlay {
+  opacity: 1;
+}
+
+/* Fallback project image (gradient placeholder) */
+.portfolio-project-img-placeholder {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2318 100%);
+  color: var(--gold);
+  font-size: 2rem;
+}
+
+/* ============================================================
+   Timeline (About / CV experience)
+============================================================ */
+.portfolio-timeline-item {
+  border-left: 3px solid var(--gold);
+  padding-left: 1.25rem;
+  margin-bottom: 1.75rem;
+  position: relative;
+}
+
+.portfolio-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 4px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--black);
+}
+
+.portfolio-timeline-role {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 0.1rem;
+}
+
+.portfolio-timeline-org {
+  font-size: 0.88rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.portfolio-timeline-date {
+  font-size: 0.78rem;
+  color: var(--text-light-muted);
+  float: right;
+  font-weight: 500;
+}
+
+.portfolio-timeline-desc {
+  font-size: 0.88rem;
+  color: var(--text-light-muted);
+  margin-top: 0.35rem;
+  line-height: 1.55;
+}
+
+/* Dark variant timeline */
+.section-dark .portfolio-timeline-item::before {
+  border-color: var(--black);
+}
+
+.section-dark .portfolio-timeline-role {
+  color: #ffffff;
+}
+
+.section-dark .portfolio-timeline-desc {
+  color: var(--text-dark-muted);
+}
+
+/* ============================================================
+   Works Filter Tabs
+============================================================ */
+.portfolio-filter-tabs .nav {
+  border-bottom: 1px solid var(--gold-muted);
+  gap: 0.25rem;
+}
+
+.portfolio-filter-tabs .nav-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #555555 !important;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px 8px 0 0;
+  padding: 0.55rem 1.1rem;
+  transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.portfolio-filter-tabs .nav-link:hover {
+  color: var(--black) !important;
+  background: rgba(201,168,76,0.06);
+}
+
+.portfolio-filter-tabs .nav-link.active {
+  color: var(--black) !important;
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+/* ============================================================
+   CV Layout
+============================================================ */
+.portfolio-cv-bar {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 100;
+  background: rgba(17,17,17,0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--gold-border);
+  padding: 0.6rem 0;
+}
+
+.portfolio-cv-doc {
+  max-width: 860px;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.portfolio-cv-sidebar {
+  background: var(--black);
+  color: #ffffff;
+  padding: 2rem 1.5rem;
+  min-height: 100%;
+}
+
+.portfolio-cv-sidebar h5 {
+  color: #ffffff;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.portfolio-cv-sidebar p.cv-title {
+  color: var(--gold);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.portfolio-cv-sidebar .cv-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-dark-muted);
+  margin-bottom: 0.55rem;
+}
+
+.portfolio-cv-sidebar .cv-contact-row a {
+  color: var(--text-dark-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  word-break: break-all;
+}
+
+.portfolio-cv-sidebar .cv-contact-row a:hover {
+  color: var(--gold);
+}
+
+.portfolio-cv-skill-bar {
+  height: 5px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 99px;
+}
+
+.portfolio-cv-skill-bar .progress-bar {
+  background: var(--gold);
+  border-radius: 99px;
+}
+
+.portfolio-cv-skill-label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.portfolio-cv-main {
+  background: #ffffff;
+  padding: 2rem 1.75rem;
+}
+
+.portfolio-cv-section-heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-cv-divider {
+  border-color: var(--gold-muted);
+  margin: 0.4rem 0 1rem;
+}
+
+.cv-gold-hr {
+  border: none;
+  border-top: 1px solid var(--gold-border);
+  margin: 1.25rem 0;
+}
+
+/* ============================================================
+   Contact Page
+============================================================ */
+.portfolio-contact-info-card {
+  background: var(--black);
+  color: #ffffff;
+  border-radius: 12px;
+  height: 100%;
+}
+
+.portfolio-contact-form-shell {
+  border: 1px solid #e8e3d8;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.portfolio-contact-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.portfolio-contact-info-row .icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid var(--gold-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.portfolio-contact-social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-border);
+  color: var(--text-dark-muted);
+  font-size: 1.15rem;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.portfolio-contact-social-icon:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--black);
+}
+
+/* Form styling */
+.portfolio-contact-form .form-control,
+.portfolio-contact-form .form-select {
+  border-color: #ddd8cc;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  padding: 0.65rem 1rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.portfolio-contact-form .form-control:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.18);
+}
+
+.portfolio-contact-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 0.3rem;
+}
+
+/* ============================================================
+   Footer
+============================================================ */
+.portfolio-footer {
+  border-top: 1px solid var(--gold-border);
+  background: var(--black) !important;
+  color: rgba(255,255,255,0.78);
+}
+
+.portfolio-footer .text-muted {
+  color: rgba(255,255,255,0.72) !important;
+}
+
+.portfolio-footer h1,
+.portfolio-footer h2,
+.portfolio-footer h3,
+.portfolio-footer h4,
+.portfolio-footer h5,
+.portfolio-footer h6,
+.portfolio-footer strong {
+  color: #ffffff !important;
+}
+
+.portfolio-footer a {
+  color: rgba(255,255,255,0.68) !important;
+  transition: color var(--transition-fast);
+}
+
+.portfolio-footer a:hover {
+  color: var(--gold) !important;
+}
+
+/* ============================================================
+   Contact CTA Banner
+============================================================ */
+.portfolio-cta-banner {
+  background: var(--black);
+  padding: 5rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-cta-banner::before {
+  content: '';
+  position: absolute;
+  bottom: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* ============================================================
+   Hover & Transition Utilities
+============================================================ */
+.hover-gold:hover { color: var(--gold) !important; }
+
+.btn-warning {
+  background: var(--gold) !important;
+  border-color: var(--gold) !important;
+  color: var(--black) !important;
+  font-weight: 600;
+}
+
+.btn-warning:hover {
+  background: #b8942e !important;
+  border-color: #b8942e !important;
+}
+
+.btn-outline-warning {
+  border-color: var(--gold) !important;
+  color: var(--gold) !important;
+}
+
+.btn-outline-warning:hover {
+  background: var(--gold) !important;
+  color: var(--black) !important;
+}
+
+/* ============================================================
+   Video Embed
+============================================================ */
+.portfolio-video-card {
+  border: 1px solid #e8e3d8;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  transition: box-shadow var(--transition-med), border-color var(--transition-fast);
+}
+
+.portfolio-video-card:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-color: var(--gold-border);
+}
+
+.portfolio-detail-card {
+  border-color: var(--gold-muted);
+  border-radius: 8px;
+}
+
+.portfolio-project-detail-hero {
+  max-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================================================
+   Print Styles (CV page)
+============================================================ */
+@media print {
+  .portfolio-nav,
+  .portfolio-cv-bar,
+  .portfolio-footer,
+  .portfolio-cta-banner,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    font-size: 11pt;
+  }
+
+  .portfolio-cv-doc {
+    box-shadow: none;
+    max-width: 100%;
+  }
+
+  .portfolio-cv-sidebar {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    color: #666;
+  }
+}

@@ -17,6 +17,7 @@ from components.ui.footer import portfolio_footer
 from components.ui.layout import page_banner
 from components.ui.navbar import portfolio_navbar
 from data import OWNER, SOCIAL_LINKS
+from services.supabase_data import save_contact_message
 
 
 def _field_error(errors: dict[str, str], field: str) -> str | None:
@@ -249,6 +250,8 @@ def setup_contact_routes(app) -> None:
 
         if errors:
             return _contact_form(errors=errors, values=values)
+
+        save_contact_message(values)
 
         try:
             smtp_host = os.getenv("SMTP_HOST", "")

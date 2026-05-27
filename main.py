@@ -2,10 +2,11 @@
 main.py - Segun Banji Data Science Portfolio entrypoint.
 """
 import os
+from pathlib import Path
 
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(Path(__file__).with_name(".env"))
 
 from fasthtml.common import FastHTML, Link, Script, serve
 from faststrap import add_bootstrap, mount_assets

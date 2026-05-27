@@ -369,3 +369,16 @@ SOCIAL_LINKS = [
     {"icon": "github", "href": "https://github.com/banjisegun99", "label": "GitHub"},
     {"icon": "envelope-fill", "href": "mailto:banjisegun99@gmail.com", "label": "Email"},
 ]
+
+
+DATA_SOURCE = "local"
+
+try:
+    from services.supabase_data import load_portfolio_data
+
+    _supabase_data = load_portfolio_data()
+    if _supabase_data:
+        globals().update(_supabase_data)
+except Exception:
+    # Keep the static fallback available if Supabase is unavailable at import time.
+    DATA_SOURCE = "local"

@@ -184,9 +184,9 @@ def _about_stats_section() -> Section:
         ),
         H2("About Segun", cls="text-white fw-bold mb-3"),
         P(
-            "Seasoned Data Analyst & BI Expert with 7+ years transforming complex "
-            "datasets into actionable business intelligence. Consultant at McMoren "
-            "Logistics and Lecturer at Midramo Institute.",
+            "Data Analyst and Digital Consultant with 7+ years using Excel, SQL, "
+            "and Power BI to improve logistics reporting, operational efficiency, "
+            "and business intelligence decisions.",
             cls="text-muted-dark mb-3",
             style="line-height:1.65;",
         ),

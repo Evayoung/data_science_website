@@ -1,17 +1,18 @@
 """
-routes/cv.py — CV page (/cv) and PDF download (/cv/download).
+CV page (/cv) and PDF download (/cv/download).
 """
 from pathlib import Path
 
 from fasthtml.common import (
-    A, Div, H1, H2, H3, H5, Hr, Img, Li, P, Section, Span, Title, Ul,
+    A, Div, H2, H3, H5, Hr, Img, Li, P, Section, Span, Title, Ul,
 )
-from faststrap import Badge, Button, Col, Container, Icon, Progress, Row
+from faststrap import Button, Col, Container, Icon, Progress, Row
 
 from components.ui.footer import portfolio_footer
 from components.ui.navbar import portfolio_navbar
 from data import (
-    CERTIFICATIONS, CV_SKILLS, EDUCATION, EXPERIENCE, OWNER, SOCIAL_LINKS,
+    CERTIFICATIONS, CV_SKILLS, EDUCATION, EXPERIENCE, LANGUAGES, OWNER,
+    PROJECTS, SOFT_SKILLS,
 )
 
 
@@ -20,7 +21,7 @@ def _cv_download_bar() -> Div:
     return Div(
         Container(
             Div(
-                Span("Curriculum Vitae — Segun Banji", cls="text-muted small me-auto"),
+                Span("Curriculum Vitae - Segun Banji", cls="text-muted small me-auto"),
                 Div(
                     Button(
                         Icon("download"), " Download PDF",
@@ -49,46 +50,36 @@ def _cv_download_bar() -> Div:
 def _sidebar_col() -> Col:
     """Left dark CV sidebar: photo, name, title, contact, skills, languages."""
     contact_rows = [
-        (OWNER["email"],    "envelope-fill",  f"mailto:{OWNER['email']}"),
-        (OWNER["location"], "geo-alt-fill",   None),
+        (OWNER["phone"], "telephone-fill", f"tel:{OWNER['phone']}"),
+        (OWNER["email"], "envelope-fill", f"mailto:{OWNER['email']}"),
+        (OWNER["location"], "geo-alt-fill", None),
         ("linkedin.com/in/banjisegun", "linkedin", OWNER["linkedin"]),
-        ("github.com/banjisegun99",    "github",   OWNER["github"]),
     ]
 
     contact_divs = [
         Div(
             Icon(icon, cls="text-warning flex-shrink-0"),
-            (
-                A(label, href=href, cls="cv-contact-row-text")
-                if href else
-                Span(label, cls="cv-contact-row-text")
-            ),
+            A(label, href=href, cls="cv-contact-row-text") if href else Span(label, cls="cv-contact-row-text"),
             cls="cv-contact-row",
         )
         for label, icon, href in contact_rows
     ]
 
-    skill_bars = []
-    for sk in CV_SKILLS:
-        skill_bars.append(
+    skill_bars = [
+        Div(
             Div(
-                Div(
-                    Span(sk["name"], cls=""),
-                    Span(f"{sk['level']}%", cls=""),
-                    cls="portfolio-cv-skill-label",
-                ),
-                Progress(
-                    sk["level"],
-                    variant="warning",
-                    cls="portfolio-cv-skill-bar",
-                ),
-                cls="mb-3",
-            )
+                Span(sk["name"]),
+                Span(f"{sk['level']}%"),
+                cls="portfolio-cv-skill-label",
+            ),
+            Progress(sk["level"], variant="warning", cls="portfolio-cv-skill-bar"),
+            cls="mb-3",
         )
+        for sk in CV_SKILLS
+    ]
 
     return Col(
         Div(
-            # Profile photo
             Div(
                 Img(
                     src="/assets/images/profile.jpeg",
@@ -98,28 +89,30 @@ def _sidebar_col() -> Col:
                 ),
                 cls="text-center",
             ),
-            H5("Segun Banji", cls="text-center text-white mb-0"),
+            H5(OWNER["name"], cls="text-center text-white mb-0"),
             P(OWNER["title"], cls="cv-title text-center mb-3"),
             Hr(cls="cv-gold-hr"),
-            # Contact
             Div(
                 Span("Contact", cls="portfolio-cv-section-heading d-block mb-2"),
                 *contact_divs,
                 cls="mb-4",
             ),
-            # Skills
             Hr(cls="cv-gold-hr"),
             Div(
                 Span("Core Skills", cls="portfolio-cv-section-heading d-block mb-3"),
                 *skill_bars,
                 cls="mb-4",
             ),
-            # Languages
             Hr(cls="cv-gold-hr"),
             Div(
                 Span("Languages", cls="portfolio-cv-section-heading d-block mb-2"),
-                P("English — Fluent", cls="text-muted small mb-1"),
-                P("Yoruba — Native", cls="text-muted small mb-0"),
+                *[P(lang, cls="text-muted small mb-1") for lang in LANGUAGES],
+                cls="mb-2",
+            ),
+            Hr(cls="cv-gold-hr"),
+            Div(
+                Span("Soft Skills", cls="portfolio-cv-section-heading d-block mb-2"),
+                P(" | ".join(SOFT_SKILLS), cls="text-muted small mb-0"),
                 cls="mb-2",
             ),
             cls="portfolio-cv-sidebar",
@@ -138,31 +131,28 @@ def _main_col() -> Col:
             Hr(cls="portfolio-cv-divider"),
         )
 
-    # Profile summary
     summary = Div(
         section_heading("Profile Summary"),
-        P(
-            f"{OWNER['name']} is a seasoned Data Analyst and Business Intelligence Expert "
-            "with 7+ years of experience helping SMEs and organisations leverage analytics "
-            "to boost efficiency and profitability. Currently serving as Digital Consultant "
-            "at McMoren Logistics and Data Analytics Lecturer at Midramo Institute, he "
-            "combines deep technical expertise with a passion for clear data storytelling "
-            "and practical education.",
-            cls="text-muted small",
-            style="line-height:1.7;",
-        ),
+        P(OWNER["summary"], cls="text-muted small", style="line-height:1.7;"),
         cls="mb-4",
     )
 
-    # Experience
     exp_items = []
     for exp in EXPERIENCE:
+        highlights = [
+            Li(item, cls="portfolio-timeline-desc small mb-1")
+            for item in exp.get("highlights", [])[:3]
+        ]
         exp_items.append(
             Div(
                 Span(exp["dates"], cls="portfolio-timeline-date text-muted small"),
                 H3(exp["role"], cls="portfolio-timeline-role fs-6"),
-                Span(exp["org"], cls="portfolio-timeline-org d-block small"),
+                Span(
+                    f"{exp['org']} - {exp.get('location', '')}".strip(" -"),
+                    cls="portfolio-timeline-org d-block small",
+                ),
                 P(exp["description"], cls="portfolio-timeline-desc small mb-0"),
+                Ul(*highlights, cls="ps-3 mt-2 mb-0") if highlights else "",
                 cls="portfolio-timeline-item",
             )
         )
@@ -173,16 +163,26 @@ def _main_col() -> Col:
         cls="mb-4",
     )
 
-    # Education
-    edu_items = [
-        Div(
-            Span(edu["year"], cls="portfolio-timeline-date text-muted small"),
-            H3(edu["degree"], cls="portfolio-timeline-role fs-6"),
-            Span(edu["institution"], cls="portfolio-timeline-org d-block small"),
-            cls="portfolio-timeline-item",
+    edu_items = []
+    for edu in EDUCATION:
+        detail_bits = []
+        if edu.get("gpa"):
+            detail_bits.append(f"GPA: {edu['gpa']}")
+        if edu.get("honors"):
+            detail_bits.append(f"Honors: {edu['honors']}")
+        edu_items.append(
+            Div(
+                Span(edu["year"], cls="portfolio-timeline-date text-muted small"),
+                H3(edu["degree"], cls="portfolio-timeline-role fs-6"),
+                Span(
+                    f"{edu['institution']} - {edu.get('location', '')}".strip(" -"),
+                    cls="portfolio-timeline-org d-block small",
+                ),
+                P(" | ".join(detail_bits), cls="portfolio-timeline-desc small mb-0")
+                if detail_bits else "",
+                cls="portfolio-timeline-item",
+            )
         )
-        for edu in EDUCATION
-    ]
 
     education_section = Div(
         section_heading("Education"),
@@ -190,7 +190,23 @@ def _main_col() -> Col:
         cls="mb-4",
     )
 
-    # Certifications
+    project_items = [
+        Div(
+            Span(project.get("year", ""), cls="portfolio-timeline-date text-muted small"),
+            H3(project["title"], cls="portfolio-timeline-role fs-6"),
+            Span(", ".join(project["tools"]), cls="portfolio-timeline-org d-block small"),
+            P(project["description"], cls="portfolio-timeline-desc small mb-0"),
+            cls="portfolio-timeline-item",
+        )
+        for project in PROJECTS[:5]
+    ]
+
+    projects_section = Div(
+        section_heading("Selected Projects"),
+        *project_items,
+        cls="mb-4",
+    )
+
     cert_items = [
         Div(
             Icon("check-circle-fill", cls="text-warning me-2 flex-shrink-0"),
@@ -201,7 +217,7 @@ def _main_col() -> Col:
     ]
 
     certs_section = Div(
-        section_heading("Certifications"),
+        section_heading("Certifications & Training"),
         *cert_items,
     )
 
@@ -209,6 +225,7 @@ def _main_col() -> Col:
         Div(
             summary,
             experience_section,
+            projects_section,
             education_section,
             certs_section,
             cls="portfolio-cv-main",
@@ -224,17 +241,13 @@ def setup_cv_routes(app) -> None:
         nav = portfolio_navbar("/cv")
         footer = portfolio_footer()
         return (
-            Title("CV — Segun Banji"),
+            Title("CV - Segun Banji"),
             nav,
             _cv_download_bar(),
             Section(
                 Container(
                     Div(
-                        Row(
-                            _sidebar_col(),
-                            _main_col(),
-                            cls="g-0",
-                        ),
+                        Row(_sidebar_col(), _main_col(), cls="g-0"),
                         cls="portfolio-cv-doc mx-auto my-5",
                     ),
                 ),
@@ -246,9 +259,9 @@ def setup_cv_routes(app) -> None:
     @app.get("/cv/download")
     def cv_download():
         from fasthtml.common import FileResponse
+
         pdf_path = Path("static/cv/cv.pdf")
         if not pdf_path.exists():
-            from fasthtml.common import H2, P
             return (
                 Title("CV PDF Not Found"),
                 portfolio_navbar("/cv"),
@@ -261,7 +274,7 @@ def setup_cv_routes(app) -> None:
                                 "Please drop cv.pdf into the static/cv/ folder.",
                                 cls="text-muted",
                             ),
-                            A("← Back to CV", href="/cv", cls="text-warning fw-bold"),
+                            A("Back to CV", href="/cv", cls="text-warning fw-bold"),
                             cls="py-5",
                         ),
                     ),

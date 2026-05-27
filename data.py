@@ -1,6 +1,5 @@
 """
-data.py — All content data for Segun Banji's Data Science Portfolio.
-Replace placeholder content (slugs, video IDs, links) with your real data.
+Shared content data for Segun Banji's Data Science Portfolio.
 """
 
 # ---------------------------------------------------------------------------
@@ -9,37 +8,43 @@ Replace placeholder content (slugs, video IDs, links) with your real data.
 OWNER = {
     "name": "Segun Banji",
     "initials": "SB",
-    "title": "Data Analyst & Business Intelligence Expert",
+    "title": "Data Analyst & Digital Consultant",
     "tagline": (
-        "7+ years turning raw data into decisions that move businesses forward. "
-        "Consultant · Educator · BI Strategist."
+        "7+ years using Excel, SQL, and Power BI to improve operations, "
+        "reporting, and business intelligence decisions."
     ),
+    "phone": "+2348138720817",
     "email": "banjisegun99@gmail.com",
     "linkedin": "https://linkedin.com/in/banjisegun",
     "github": "https://github.com/banjisegun99",
-    "location": "Nigeria",
+    "location": "Satellite Town, Lagos",
+    "summary": (
+        "Data Analyst and Digital Consultant with 7+ years of experience using "
+        "Excel, SQL, and Power BI to drive operational efficiency in logistics "
+        "and business intelligence. Proven record of improving reporting accuracy "
+        "by 35%, reducing operational costs by 20%, and automating analytics "
+        "processes for decision-making. Passionate about leveraging data insights "
+        "to optimize business performance and digital strategy."
+    ),
     "bio": [
         (
-            "I am a seasoned Data Analyst and Business Intelligence Expert with over 7 years "
-            "of experience transforming complex datasets into clear, actionable insights. "
-            "Currently serving as Digital Consultant at McMoren Logistics and Lecturer in Data "
-            "Analytics at Midramo Institute, I bridge the gap between raw numbers and real "
-            "business outcomes."
+            "I am a Data Analyst and Digital Consultant with 7+ years of experience "
+            "using Excel, SQL, and Power BI to turn operational data into decisions "
+            "that improve accuracy, cost control, and business performance."
         ),
         (
-            "My work spans dashboards that track operational performance in real-time, SQL "
-            "query pipelines that clean and model messy enterprise data, and Python automation "
-            "that saves analysts hours every week. I am equally passionate about education — "
-            "designing curriculum that makes analytics accessible to beginners and SME teams."
+            "My recent work spans logistics data frameworks, Excel analytical models, "
+            "Power BI dashboards, SQL data validation, and training programs that "
+            "make analytics practical for business teams and young learners."
         ),
     ],
     "how_i_work": (
-        "I lead with questions before tools: What decision does this data need to support? "
-        "Who reads this report, and how do they think? From there I pick the right stack — "
-        "Excel for rapid prototyping, Power BI for stakeholder dashboards, Python for "
-        "automation and prediction, SQL for everything in between."
+        "I start with the operational decision behind the data, then design the "
+        "cleanest path from collection to insight: Excel for practical modelling, "
+        "SQL for validation and transformation, and Power BI for dashboards "
+        "stakeholders can act on quickly."
     ),
-    "youtube_channel": "#",  # Replace with real YouTube channel URL
+    "youtube_channel": "#",
     "availability": "Available for consulting",
 }
 
@@ -47,36 +52,46 @@ OWNER = {
 # STATS (home page)
 # ---------------------------------------------------------------------------
 STATS = [
-    {"value": 50, "suffix": "+", "label": "Projects Completed"},
+    {"value": 50, "suffix": "k+", "label": "Records Cleaned Monthly"},
     {"value": 7, "suffix": "+", "label": "Years Experience"},
-    {"value": 200, "suffix": "+", "label": "Students Trained"},
-    {"value": 15, "suffix": "+", "label": "Happy Clients"},
+    {"value": 200, "suffix": "+", "label": "People Trained"},
+    {"value": 35, "suffix": "%", "label": "Accuracy Improvement"},
 ]
 
 # ---------------------------------------------------------------------------
 # SKILLS (flat list for home skills strip)
 # ---------------------------------------------------------------------------
 SKILLS_FLAT = [
-    "Microsoft Excel", "Power BI", "Google Sheets", "Google Data Studio",
-    "SQL", "MySQL", "Microsoft SQL Server", "Python",
-    "Pandas", "NumPy", "Matplotlib", "VBA",
-    "Data Cleaning", "Data Storytelling", "Dashboard Design", "Curriculum Design",
+    "SQL",
+    "Microsoft Excel",
+    "Power BI",
+    "Data Cleaning",
+    "Business Intelligence",
+    "Dashboard Design",
+    "Data Validation",
+    "Reporting Automation",
+    "Operational Analytics",
+    "Market Analysis",
+    "Data Storytelling",
+    "Digital Consulting",
 ]
 
 # ---------------------------------------------------------------------------
 # TOOLS (grouped for About page)
 # ---------------------------------------------------------------------------
 TOOLS = {
-    "Analytics & BI": ["Microsoft Excel", "Power BI", "Google Data Studio", "Google Sheets"],
-    "Databases": ["Microsoft SQL Server", "MySQL", "SQL"],
-    "Programming": ["Python", "Pandas", "NumPy", "Matplotlib", "VBA"],
+    "Analytics & BI": ["Microsoft Excel", "Power BI"],
+    "Databases": ["SQL"],
+    "Programming": ["Python for Data Analysis"],
     "Capabilities": [
-        "Data Cleaning & Transformation",
+        "Data Cleaning",
+        "Data Validation",
         "Business Intelligence Reporting",
-        "Predictive & Descriptive Analytics",
+        "Operational Analytics",
+        "Market Analysis",
         "Data Storytelling",
-        "SQL Query Optimization",
-        "Teaching & Curriculum Design",
+        "Digital Strategy",
+        "Training & Facilitation",
     ],
 }
 
@@ -84,12 +99,12 @@ TOOLS = {
 # CV SKILLS (with proficiency % for progress bars)
 # ---------------------------------------------------------------------------
 CV_SKILLS = [
-    {"name": "Power BI", "level": 95},
-    {"name": "Microsoft Excel / VBA", "level": 95},
-    {"name": "SQL", "level": 88},
-    {"name": "Python (Pandas, NumPy)", "level": 80},
-    {"name": "Google Data Studio", "level": 85},
-    {"name": "Data Storytelling", "level": 92},
+    {"name": "SQL", "level": 90},
+    {"name": "Microsoft Excel", "level": 95},
+    {"name": "Power BI", "level": 92},
+    {"name": "Data Cleaning", "level": 90},
+    {"name": "Reporting Automation", "level": 88},
+    {"name": "Business Intelligence", "level": 90},
 ]
 
 # ---------------------------------------------------------------------------
@@ -97,33 +112,37 @@ CV_SKILLS = [
 # ---------------------------------------------------------------------------
 EXPERIENCE = [
     {
-        "role": "Digital Consultant",
-        "org": "McMoren Logistics",
-        "dates": "2021 – Present",
+        "role": "Digital Consultant & Data Analyst",
+        "org": "McMoren Logistics Company",
+        "location": "Lagos, Nigeria",
+        "dates": "Nov 2020 - Present",
         "description": (
-            "Designed and maintained Power BI dashboards to monitor truck movement, "
-            "driver efficiency, and turnaround time. Reduced delivery exception reporting "
-            "time by 40% through automated data pipelines."
+            "Built logistics data frameworks, Excel analytical models, and performance "
+            "dashboards that improved reporting accuracy, delivery efficiency, compliance, "
+            "and fuel-cost visibility."
         ),
+        "highlights": [
+            "Designed a data collection framework that improved logistics data accuracy by 35% and reduced reporting delays by 25%.",
+            "Developed Excel-based analytical models and performance dashboards to monitor fleet movement and KPIs, enhancing delivery efficiency by 20%.",
+            "Integrated traffic and regulatory datasets into internal systems, supporting 100% transport and safety compliance.",
+            "Filtered, validated, and automated cleaning for 50,000+ operational records monthly.",
+            "Conducted trend and variance analyses that led to a 15% reduction in fuel costs and better route planning.",
+        ],
     },
     {
-        "role": "Data Analytics Lecturer",
-        "org": "Midramo Institute",
-        "dates": "2020 – Present",
+        "role": "Business Analyst",
+        "org": "McAdur Imagination Cafe",
+        "location": "Lagos, Nigeria",
+        "dates": "Aug 2016 - Sept 2019",
         "description": (
-            "Designed and delivered a comprehensive Data Analytics curriculum with "
-            "real-world business case studies. Over 200 students trained across cohorts "
-            "spanning Excel, SQL, Power BI, and Python."
+            "Collected, cleaned, transformed, and validated multi-country business datasets "
+            "to improve reporting accuracy and reveal customer and sales patterns."
         ),
-    },
-    {
-        "role": "Data Analyst",
-        "org": "Kid Tech Initiative",
-        "dates": "2019 – 2020",
-        "description": (
-            "Introduced young learners to data visualization concepts and Python coding "
-            "fundamentals. Developed age-appropriate projects to foster computational thinking."
-        ),
+        "highlights": [
+            "Collected, cleaned, and transformed multi-country datasets, improving reporting accuracy by 30%.",
+            "Corrected data inconsistencies across multiple databases, reducing processing errors by 40% through validation and standardization.",
+            "Delivered data-driven reports that influenced strategic decisions and boosted sales performance by 18%.",
+        ],
     },
 ]
 
@@ -132,9 +151,12 @@ EXPERIENCE = [
 # ---------------------------------------------------------------------------
 EDUCATION = [
     {
-        "degree": "B.Sc. Statistics",
-        "institution": "University of Ilorin (Nigeria)",
+        "degree": "Bachelor of Science in Statistics",
+        "institution": "University of Ilorin",
+        "location": "Kwara State, Nigeria",
         "year": "2019",
+        "gpa": "3.77/5.00",
+        "honors": "Second Class Upper",
     },
 ]
 
@@ -142,10 +164,20 @@ EDUCATION = [
 # CERTIFICATIONS
 # ---------------------------------------------------------------------------
 CERTIFICATIONS = [
-    "Microsoft Certified: Power BI Data Analyst Associate",
-    "Google Data Analytics Professional Certificate",
-    "SQL for Data Science — Coursera",
-    "Python for Everybody — University of Michigan / Coursera",
+    "Data Analytics and Business Intelligence, Dataleum Academy (May 2023 - June 2023)",
+    "SQL Database (Beginner & Intermediate), Sololearn Academy",
+    "Python for Data Analysis (Beginner), Sololearn Academy",
+    "Data Analytics Essentials, Cisco Networking Academy",
+]
+
+LANGUAGES = ["English - Fluent"]
+
+SOFT_SKILLS = [
+    "Analytical Thinking",
+    "Communication",
+    "Problem Solving",
+    "Team Collaboration",
+    "Attention to Detail",
 ]
 
 # ---------------------------------------------------------------------------
@@ -154,26 +186,26 @@ CERTIFICATIONS = [
 SPECIALISATIONS = [
     {
         "icon": "graph-up-arrow",
-        "title": "Data Analysis & Insights",
+        "title": "Operational Analytics",
         "description": (
-            "End-to-end analysis from raw data ingestion through cleaning, modelling, "
-            "and insight communication — built for real business decisions."
+            "Logistics and business performance analysis built around accuracy, "
+            "cost control, KPI visibility, and decision-ready reporting."
         ),
     },
     {
         "icon": "bar-chart-line-fill",
         "title": "BI Dashboards & Reporting",
         "description": (
-            "Power BI and Excel dashboards that give operations, management, and "
-            "executives instant visibility into what matters most."
+            "Excel and Power BI dashboards that help teams monitor performance, "
+            "spot variance, and act faster."
         ),
     },
     {
         "icon": "mortarboard-fill",
-        "title": "Analytics Education",
+        "title": "Analytics Training",
         "description": (
-            "Curriculum design and delivery that takes complete beginners to job-ready "
-            "analysts — covering Excel, SQL, Python, and Power BI."
+            "Practical analytics training across Excel, Power BI, SQL, and data "
+            "storytelling for business teams and youth programs."
         ),
     },
 ]
@@ -183,123 +215,98 @@ SPECIALISATIONS = [
 # ---------------------------------------------------------------------------
 PROJECTS = [
     {
-        "slug": "mcmoren-logistics-dashboard",
-        "title": "McMoren Logistics BI Dashboard",
+        "slug": "customer-laptop-preference-analytics",
+        "title": "Customer Laptop Preference Analytics",
+        "year": "2025",
+        "category": "analysis",
+        "description": (
+            "PC market survey analytics identifying customer preferences across "
+            "10 major laptop brands."
+        ),
+        "tools": ["Excel", "Power BI"],
+        "image": "/assets/images/projects/sales-analysis.jpg",
+        "featured": True,
+        "links": {},
+        "detail": (
+            "Conducted PC market survey analytics to identify customer preferences "
+            "across 10 major laptop brands. Cleaned, modelled, and visualized survey "
+            "data in Excel and Power BI, revealing trends in performance, affordability, "
+            "design priorities, buying behavior, and pricing sensitivity."
+        ),
+    },
+    {
+        "slug": "hewwelt-data-job-research",
+        "title": "Hewwelt Data Job Research",
+        "year": "2024",
         "category": "bi-dashboards",
         "description": (
-            "A live Power BI dashboard suite tracking truck movement, driver efficiency, "
-            "fuel consumption, and delivery turnaround time across the entire fleet. "
-            "Enabled management to cut report generation time from 2 days to real-time."
+            "SQL and Power BI recruitment analytics for 50,000+ job data entries."
         ),
-        "tools": ["Power BI", "SQL Server", "Excel"],
+        "tools": ["SQL", "Power BI"],
+        "image": "/assets/images/projects/sql-supply-chain.jpg",
+        "featured": True,
+        "links": {},
+        "detail": (
+            "Processed and validated 50,000+ recruitment data entries using SQL, "
+            "then designed interactive Power BI dashboards for hiring metrics and "
+            "recruitment trends. The work improved HR reporting efficiency by 25% "
+            "and produced strategic recommendations for recruitment optimization."
+        ),
+    },
+    {
+        "slug": "digprom-analytics",
+        "title": "Digprom Analytics",
+        "year": "2023",
+        "category": "analysis",
+        "description": (
+            "Customer-record cleaning, ETL preparation, and churn insight reporting."
+        ),
+        "tools": ["SQL", "Power BI"],
         "image": "/assets/images/projects/mcmoren-dashboard.jpg",
         "featured": True,
         "links": {},
         "detail": (
-            "The McMoren Logistics dashboard project began with a data audit of three "
-            "disconnected Excel workbooks and a partially maintained SQL Server database. "
-            "After normalising the schema and building an ETL pipeline, we created a "
-            "five-page Power BI report covering fleet overview, driver performance, route "
-            "efficiency, fuel KPIs, and an executive summary. The dashboard refreshes "
-            "automatically every hour via scheduled data gateway."
+            "Cleaned and transformed over 100,000 customer records with SQL and "
+            "Power BI, improving model readiness by 35%. Designed automated ETL data "
+            "pipelines for churn prediction, reducing manual processing time by 40% "
+            "and supporting data-driven retention strategies."
         ),
     },
     {
-        "slug": "midramo-analytics-curriculum",
-        "title": "Midramo Analytics Curriculum",
+        "slug": "kwara-tech-for-youths-initiative",
+        "title": "Kwara Tech for Youths' Initiative",
+        "year": "2022",
         "category": "education",
         "description": (
-            "A structured 12-week Data Analytics course designed for Midramo Institute, "
-            "covering Excel fundamentals, SQL querying, Power BI dashboarding, and an "
-            "introduction to Python data analysis."
+            "Youth empowerment analytics and Excel/Power BI training for 200+ participants."
         ),
-        "tools": ["Excel", "SQL", "Power BI", "Python"],
+        "tools": ["Excel", "Power BI"],
         "image": "/assets/images/projects/midramo-curriculum.jpg",
-        "featured": True,
-        "links": {},
-        "detail": (
-            "Designed from scratch as a competency-based curriculum with weekly practical "
-            "business case studies. Each module includes a dataset, guided exercises, and "
-            "a mini-project that mirrors real analyst workflows. Over 200 students have "
-            "completed the programme across multiple cohorts."
-        ),
-    },
-    {
-        "slug": "sales-performance-analysis",
-        "title": "Sales Performance Analysis",
-        "category": "analysis",
-        "description": (
-            "Deep-dive Excel and Python analysis of 3-year sales data for an SME client. "
-            "Identified seasonality patterns, top-performing product lines, and "
-            "underperforming regions with actionable recommendations."
-        ),
-        "tools": ["Python", "Pandas", "Matplotlib", "Excel"],
-        "image": "/assets/images/projects/sales-analysis.jpg",
         "featured": False,
         "links": {},
         "detail": (
-            "Starting from raw transactional exports, the data was cleaned and merged "
-            "using Pandas before exploratory analysis. Seasonality decomposition revealed "
-            "a consistent Q3 dip that had previously been attributed to market conditions "
-            "but was actually a supply-chain lag. Recommendations led to a 12% revenue "
-            "improvement in the following quarter."
+            "Collaborated with a state technology office to deliver data-driven youth "
+            "empowerment programs, training 200+ participants in Excel and Power BI. "
+            "Led analysis on training performance metrics and created dashboards for "
+            "government reporting and stakeholder presentations."
         ),
     },
     {
-        "slug": "hr-attrition-model",
-        "title": "HR Attrition Prediction Model",
-        "category": "analysis",
+        "slug": "kid-tech-coding-program",
+        "title": "Kid Tech Coding Program",
+        "year": "2021",
+        "category": "education",
         "description": (
-            "A Python-based predictive model to identify employees at high risk of "
-            "attrition, built on HR survey data and performance records."
+            "Analytics modules introducing children aged 8-15 to data storytelling and visualization."
         ),
-        "tools": ["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib"],
-        "image": "/assets/images/projects/hr-attrition.jpg",
-        "featured": False,
-        "links": {},
-        "detail": (
-            "Cleaned and feature-engineered 1,400-row HR dataset. Logistic regression "
-            "and random forest models were compared; the final model achieved 87% accuracy "
-            "on a hold-out test set. Results were visualised in a Matplotlib report handed "
-            "to HR leadership for proactive retention planning."
-        ),
-    },
-    {
-        "slug": "sql-supply-chain-optimisation",
-        "title": "Supply Chain SQL Optimisation",
-        "category": "analysis",
-        "description": (
-            "Rewrote legacy stored procedures and introduced indexed views across a "
-            "retail client's SQL Server database, cutting key query execution times by up to 70%."
-        ),
-        "tools": ["SQL Server", "SQL", "Power BI"],
-        "image": "/assets/images/projects/sql-supply-chain.jpg",
-        "featured": False,
-        "links": {},
-        "detail": (
-            "The client's ERP reporting module was timing out on monthly stock-reconciliation "
-            "queries. After profiling execution plans we added composite indexes, rewrote "
-            "correlated sub-queries as CTEs, and introduced incremental refresh for Power BI "
-            "reports. Monthly reporting runtime dropped from 45 minutes to under 4 minutes."
-        ),
-    },
-    {
-        "slug": "excel-vba-automation",
-        "title": "Excel VBA Reporting Automation",
-        "category": "bi-dashboards",
-        "description": (
-            "Automated a multi-step weekly reporting workflow for a financial services firm "
-            "using Excel VBA macros, saving the team 6+ hours per week."
-        ),
-        "tools": ["Excel", "VBA"],
+        "tools": ["Excel", "Power BI"],
         "image": "/assets/images/projects/excel-vba.jpg",
         "featured": False,
         "links": {},
         "detail": (
-            "The existing workflow required an analyst to manually copy data from six source "
-            "files, apply formatting, and email a summary to 12 stakeholders. VBA macros "
-            "now handle the entire process — data merge, formatting, chart refresh, and "
-            "Outlook email dispatch — at the click of a button."
+            "Developed analytics modules for children aged 8-15, simplifying concepts "
+            "like data storytelling and Power BI dashboards. Evaluated participant "
+            "performance data to improve teaching content and increase learner engagement by 45%."
         ),
     },
 ]
@@ -319,14 +326,14 @@ WORKS_CATEGORIES = [
 # ---------------------------------------------------------------------------
 VIDEOS = [
     {
-        "video_id": "dQw4w9WgXcQ",  # Replace with real YouTube video IDs
-        "title": "Getting Started with Power BI — A Practical Guide",
+        "video_id": "dQw4w9WgXcQ",
+        "title": "Getting Started with Power BI - A Practical Guide",
         "description": "Build your first interactive dashboard in Power BI from scratch using real business data.",
         "category": "tutorials",
     },
     {
         "video_id": "dQw4w9WgXcQ",
-        "title": "SQL for Data Analysts — Core Queries You Must Know",
+        "title": "SQL for Data Analysts - Core Queries You Must Know",
         "description": "Master SELECT, JOIN, GROUP BY, and window functions with real-world examples.",
         "category": "tutorials",
     },
@@ -338,7 +345,7 @@ VIDEOS = [
     },
     {
         "video_id": "dQw4w9WgXcQ",
-        "title": "How I Built the McMoren Logistics Dashboard",
+        "title": "How I Built a Logistics Dashboard",
         "description": "A behind-the-scenes case study on Power BI dashboard design for logistics.",
         "category": "case-studies",
     },

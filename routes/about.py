@@ -147,6 +147,16 @@ def _experience_education_section() -> Section:
             Div(
                 H6(edu["degree"], cls="fw-bold mb-1 text-dark"),
                 Span(edu["institution"], cls="text-warning small fw-semibold d-block"),
+                Span(edu.get("location", ""), cls="text-muted small d-block"),
+                Span(
+                    " | ".join(
+                        bit for bit in [
+                            f"GPA: {edu.get('gpa')}" if edu.get("gpa") else "",
+                            edu.get("honors", ""),
+                        ] if bit
+                    ),
+                    cls="text-muted small d-block",
+                ),
                 Span(edu["year"], cls="text-muted small"),
                 cls="portfolio-timeline-item",
             )

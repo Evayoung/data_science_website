@@ -122,6 +122,7 @@ def _contact_form(
 def _contact_info_card() -> Div:
     """Left dark info card with contact details and social links."""
     info_rows = [
+        ("telephone-fill", "Phone", OWNER["phone"], f"tel:{OWNER['phone']}"),
         ("envelope-fill", "Email", OWNER["email"], f"mailto:{OWNER['email']}"),
         ("linkedin", "LinkedIn", "linkedin.com/in/banjisegun", OWNER["linkedin"]),
         ("github", "GitHub", "banjisegun99", OWNER["github"]),
@@ -138,7 +139,7 @@ def _contact_info_card() -> Div:
                         text,
                         href=href,
                         cls="text-white text-decoration-none hover-gold small",
-                        target="_blank" if not href.startswith("mailto") else None,
+                        target="_blank" if href.startswith("http") else None,
                     )
                     if href
                     else Span(text, cls="text-muted-dark small")

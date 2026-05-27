@@ -17,7 +17,7 @@ def _bio_section() -> Section:
     photo_col = Col(
         Div(
             Img(
-                src="/assets/images/profile.jpeg",
+                src=OWNER.get("profile_image", ""),
                 alt="Segun Banji",
                 cls="portfolio-profile-photo mb-3",
             ),

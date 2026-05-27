@@ -46,6 +46,9 @@ OWNER = {
     ),
     "youtube_channel": "#",
     "availability": "Available for consulting",
+    "profile_image": "https://pdfsfspkptysfowokzgi.supabase.co/storage/v1/object/public/portfolio-images/profile/1779887668-5779de3f-profile.jpeg",
+    "profile_alt_image": "https://pdfsfspkptysfowokzgi.supabase.co/storage/v1/object/public/portfolio-images/profile/1779887670-16a28c66-profile2.jpeg",
+    "hero_background_image": "https://pdfsfspkptysfowokzgi.supabase.co/storage/v1/object/public/portfolio-images/projects/1779887686-ed01e289-mcmoren-dashboard.jpg",
 }
 
 # ---------------------------------------------------------------------------
@@ -224,7 +227,7 @@ PROJECTS = [
             "10 major laptop brands."
         ),
         "tools": ["Excel", "Power BI"],
-        "image": "/assets/images/projects/sales-analysis.jpg",
+        "image": "https://pdfsfspkptysfowokzgi.supabase.co/storage/v1/object/public/portfolio-images/projects/1779887673-44894f53-sales-analysis.jpg",
         "featured": True,
         "links": {},
         "detail": (
@@ -243,7 +246,7 @@ PROJECTS = [
             "SQL and Power BI recruitment analytics for 50,000+ job data entries."
         ),
         "tools": ["SQL", "Power BI"],
-        "image": "/assets/images/projects/sql-supply-chain.jpg",
+        "image": "https://pdfsfspkptysfowokzgi.supabase.co/storage/v1/object/public/portfolio-images/projects/1779887680-5045129c-sql-supply-chain.jpg",
         "featured": True,
         "links": {},
         "detail": (
@@ -262,7 +265,7 @@ PROJECTS = [
             "Customer-record cleaning, ETL preparation, and churn insight reporting."
         ),
         "tools": ["SQL", "Power BI"],
-        "image": "/assets/images/projects/mcmoren-dashboard.jpg",
+        "image": "https://pdfsfspkptysfowokzgi.supabase.co/storage/v1/object/public/portfolio-images/projects/1779887686-ed01e289-mcmoren-dashboard.jpg",
         "featured": True,
         "links": {},
         "detail": (
@@ -281,7 +284,7 @@ PROJECTS = [
             "Youth empowerment analytics and Excel/Power BI training for 200+ participants."
         ),
         "tools": ["Excel", "Power BI"],
-        "image": "/assets/images/projects/midramo-curriculum.jpg",
+        "image": "https://pdfsfspkptysfowokzgi.supabase.co/storage/v1/object/public/portfolio-images/projects/1779888215-8098aab5-midramo-curriculum.jpg",
         "featured": False,
         "links": {},
         "detail": (
@@ -300,7 +303,7 @@ PROJECTS = [
             "Analytics modules introducing children aged 8-15 to data storytelling and visualization."
         ),
         "tools": ["Excel", "Power BI"],
-        "image": "/assets/images/projects/excel-vba.jpg",
+        "image": "https://pdfsfspkptysfowokzgi.supabase.co/storage/v1/object/public/portfolio-images/projects/1779888219-b0ff7e9f-excel-vba.jpg",
         "featured": False,
         "links": {},
         "detail": (

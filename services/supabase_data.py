@@ -16,6 +16,9 @@ from urllib.request import Request, urlopen
 
 PROFILE_ID = os.getenv("PORTFOLIO_PROFILE_ID", "segun-banji")
 TIMEOUT_SECONDS = max(float(os.getenv("SUPABASE_TIMEOUT_SECONDS", "10")), 8.0)
+DEFAULT_PROFILE_IMAGE = "https://pdfsfspkptysfowokzgi.supabase.co/storage/v1/object/public/portfolio-images/profile/1779887668-5779de3f-profile.jpeg"
+DEFAULT_PROFILE_ALT_IMAGE = "https://pdfsfspkptysfowokzgi.supabase.co/storage/v1/object/public/portfolio-images/profile/1779887670-16a28c66-profile2.jpeg"
+DEFAULT_HERO_BACKGROUND_IMAGE = "https://pdfsfspkptysfowokzgi.supabase.co/storage/v1/object/public/portfolio-images/projects/1779887686-ed01e289-mcmoren-dashboard.jpg"
 
 
 def _env_config() -> tuple[str, str] | None:
@@ -201,6 +204,9 @@ def load_portfolio_data() -> dict | None:
         "how_i_work": profile.get("how_i_work") or "",
         "youtube_channel": profile.get("youtube_channel_url") or "#",
         "availability": profile.get("availability") or "Available",
+        "profile_image": profile.get("profile_image_url") or DEFAULT_PROFILE_IMAGE,
+        "profile_alt_image": profile.get("profile_alt_image_url") or DEFAULT_PROFILE_ALT_IMAGE,
+        "hero_background_image": profile.get("hero_background_image_url") or DEFAULT_HERO_BACKGROUND_IMAGE,
     }
 
     tools: dict[str, list[str]] = defaultdict(list)

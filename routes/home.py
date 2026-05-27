@@ -17,6 +17,9 @@ from data import OWNER, PROJECTS, SKILLS_FLAT, SOCIAL_LINKS, STATS, VIDEOS
 
 def _hero_section() -> Section:
     """Dark hero with availability badge, headline, CTA buttons, and social icons."""
+    profile_image = OWNER.get("profile_image", "")
+    profile_alt_image = OWNER.get("profile_alt_image") or profile_image
+    hero_background = OWNER.get("hero_background_image", "")
     # Availability badge
     avail_badge = Badge(
         Span(cls="pulse-dot"),
@@ -72,7 +75,7 @@ def _hero_section() -> Section:
     photo_col = Col(
         Div(
             Img(
-                src="/assets/images/profile.jpeg",
+                src=profile_image,
                 alt="Segun Banji",
                 cls="portfolio-profile-photo",
             ),
@@ -86,6 +89,7 @@ def _hero_section() -> Section:
         Container(
             Row(content_col, photo_col, cls="align-items-center"),
         ),
+        style=f"--portfolio-hero-bg:url('{hero_background}');" if hero_background else "",
         cls="portfolio-hero",
     )
 
@@ -175,7 +179,7 @@ def _about_stats_section() -> Section:
     bio_col = Col(
         Div(
             Img(
-                src="/assets/images/profile2.jpeg",
+                src=profile_alt_image,
                 alt="Segun Banji",
                 cls="portfolio-profile-photo mb-4",
                 loading="lazy",

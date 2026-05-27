@@ -204,7 +204,7 @@ h1, h2, h3, h4, h5, h6 {
   background:
     linear-gradient(90deg, rgba(17,17,17,0.80) 0%, rgba(17,17,17,0.74) 44%, rgba(17,17,17,0.60) 100%),
     linear-gradient(180deg, rgba(17,17,17,0.7), rgba(17,17,17,0.80)),
-    url("/assets/images/projects/mcmoren-dashboard.jpg") center right / cover no-repeat;
+    var(--portfolio-hero-bg, none) center right / cover no-repeat;
   padding-top: calc(var(--nav-height) + 4rem);
   padding-bottom: 5rem;
   position: relative;

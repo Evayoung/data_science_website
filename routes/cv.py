@@ -82,7 +82,7 @@ def _sidebar_col() -> Col:
         Div(
             Div(
                 Img(
-                    src="/assets/images/profile.jpeg",
+                    src=OWNER.get("profile_image", ""),
                     alt="Segun Banji",
                     cls="portfolio-profile-photo mb-3",
                     style="width:130px;height:130px;",

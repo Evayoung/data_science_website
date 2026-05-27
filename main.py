@@ -22,7 +22,11 @@ custom_hdrs = (
 
 app = FastHTML(
     hdrs=custom_hdrs,
-    secret_key=os.getenv("FASTHTML_SECRET_KEY", "banjisegun-portfolio-static-site"),
+    secret_key=(
+        os.getenv("FASTHTML_SECRET_KEY")
+        or os.getenv("PORTFOLIO_SECRET_KEY")
+        or "banjisegun-portfolio-static-site"
+    ),
 )
 
 add_bootstrap(

@@ -12,7 +12,7 @@ from components.ui.footer import portfolio_footer
 from components.ui.navbar import portfolio_navbar
 from data import (
     CERTIFICATIONS, CV_SKILLS, EDUCATION, EXPERIENCE, LANGUAGES, OWNER,
-    PROJECTS, SOFT_SKILLS,
+    PROJECTS, SOFT_SKILLS, refresh_data,
 )
 
 
@@ -21,7 +21,7 @@ def _cv_download_bar() -> Div:
     return Div(
         Container(
             Div(
-                Span("Curriculum Vitae - Segun Banji", cls="text-muted small me-auto"),
+                Span(f"Curriculum Vitae - {OWNER['name']}", cls="text-muted small me-auto"),
                 Div(
                     Button(
                         Icon("download"), " Download PDF",
@@ -83,7 +83,7 @@ def _sidebar_col() -> Col:
             Div(
                 Img(
                     src=OWNER.get("profile_image", ""),
-                    alt="Segun Banji",
+                    alt=OWNER["name"],
                     cls="portfolio-profile-photo mb-3",
                     style="width:130px;height:130px;",
                 ),
@@ -238,10 +238,11 @@ def _main_col() -> Col:
 def setup_cv_routes(app) -> None:
     @app.get("/cv")
     def cv_page():
+        refresh_data()
         nav = portfolio_navbar("/cv")
         footer = portfolio_footer()
         return (
-            Title("CV - Segun Banji"),
+            Title(f"CV - {OWNER['name']}"),
             nav,
             _cv_download_bar(),
             Section(
@@ -258,6 +259,7 @@ def setup_cv_routes(app) -> None:
 
     @app.get("/cv/download")
     def cv_download():
+        refresh_data()
         from fasthtml.common import FileResponse
 
         pdf_path = Path("static/cv/cv.pdf")

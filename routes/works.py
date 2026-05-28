@@ -8,7 +8,7 @@ from starlette.requests import Request
 from components.ui.footer import portfolio_footer
 from components.ui.layout import page_banner
 from components.ui.navbar import portfolio_navbar
-from data import PROJECTS, WORKS_CATEGORIES
+from data import OWNER, PROJECTS, WORKS_CATEGORIES, refresh_data
 
 
 def _project_card(proj: dict) -> A:
@@ -125,8 +125,9 @@ def _filter_shell(category: str = "all") -> Div:
 def setup_works_routes(app) -> None:
     @app.get("/works")
     def works_listing():
+        refresh_data()
         return (
-            Title("Works - Segun Banji Portfolio"),
+            Title(f"Works - {OWNER['name']} Portfolio"),
             portfolio_navbar("/works"),
             page_banner(
                 "Works",
@@ -146,11 +147,13 @@ def setup_works_routes(app) -> None:
 
     @app.get("/works/filter")
     def works_filter(request: Request):
+        refresh_data()
         category = request.query_params.get("category", "all")
         return _filter_shell(category)
 
     @app.get("/works/{slug}")
     def works_detail(slug: str):
+        refresh_data()
         proj = next((p for p in PROJECTS if p["slug"] == slug), None)
         if not proj:
             return (
@@ -224,7 +227,7 @@ def setup_works_routes(app) -> None:
         )
 
         return (
-            Title(f"{proj['title']} - Segun Banji"),
+            Title(f"{proj['title']} - {OWNER['name']}"),
             portfolio_navbar("/works"),
             page_banner(
                 proj["title"],

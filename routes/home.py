@@ -12,7 +12,7 @@ from faststrap.presets import LazyLoad
 
 from components.ui.footer import portfolio_footer
 from components.ui.navbar import portfolio_navbar
-from data import OWNER, PROJECTS, SKILLS_FLAT, SOCIAL_LINKS, STATS, VIDEOS
+from data import OWNER, PROJECTS, SKILLS_FLAT, SOCIAL_LINKS, STATS, VIDEOS, refresh_data
 
 
 def _hero_section() -> Section:
@@ -76,7 +76,7 @@ def _hero_section() -> Section:
         Div(
             Img(
                 src=profile_image,
-                alt="Segun Banji",
+                alt=OWNER["name"],
                 cls="portfolio-profile-photo",
             ),
             cls="d-flex justify-content-center align-items-center h-100 py-4",
@@ -188,7 +188,7 @@ def _about_stats_section() -> Section:
             ),
             cls="text-center text-lg-start",
         ),
-        H2("About Segun", cls="text-white fw-bold mb-3"),
+        H2(f"About {OWNER['name'].split()[0]}", cls="text-white fw-bold mb-3"),
         P(
             "Data Analyst and Digital Consultant with 7+ years using Excel, SQL, "
             "and Power BI to improve logistics reporting, operational efficiency, "
@@ -324,10 +324,11 @@ def _video_teaser_cards() -> Row:
 def setup_home_routes(app: FastHTML) -> None:
     @app.get("/")
     def home_page():
+        refresh_data()
         nav = portfolio_navbar("/")
         footer = portfolio_footer()
         return (
-            Title("Segun Banji — Data Analyst & BI Expert"),
+            Title(f"{OWNER['name']} - {OWNER['title']}"),
             nav,
             _hero_section(),
             _showcase_section(),
@@ -340,4 +341,5 @@ def setup_home_routes(app: FastHTML) -> None:
 
     @app.get("/api/home/videos-teaser")
     def videos_teaser_fragment():
+        refresh_data()
         return _video_teaser_cards()

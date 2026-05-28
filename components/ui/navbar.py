@@ -4,6 +4,8 @@ components/ui/navbar.py — Shared portfolio navbar.
 from fasthtml.common import A, Div, Span
 from faststrap import Button, Icon, Navbar
 
+from data import OWNER
+
 
 def portfolio_navbar(current_path: str = "/") -> Navbar:
     """Return the shared sticky dark navbar with gold accent."""
@@ -15,8 +17,8 @@ def portfolio_navbar(current_path: str = "/") -> Navbar:
 
     # Brand slot: circular initials badge + name
     brand = Div(
-        Div("SB", cls="portfolio-brand-badge"),
-        Span("Segun Banji", cls="portfolio-brand-text"),
+        Div(OWNER.get("initials", "SB"), cls="portfolio-brand-badge"),
+        Span(OWNER["name"], cls="portfolio-brand-text"),
         cls="d-flex align-items-center text-decoration-none",
     )
 

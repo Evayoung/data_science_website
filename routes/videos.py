@@ -8,7 +8,7 @@ from starlette.requests import Request
 from components.ui.footer import portfolio_footer
 from components.ui.layout import page_banner
 from components.ui.navbar import portfolio_navbar
-from data import OWNER, VIDEO_CATEGORIES, VIDEOS
+from data import OWNER, VIDEO_CATEGORIES, VIDEOS, refresh_data
 
 
 def _video_card(v: dict) -> Card:
@@ -117,8 +117,9 @@ def _subscribe_cta() -> Section:
 def setup_videos_routes(app) -> None:
     @app.get("/videos")
     def videos_page():
+        refresh_data()
         return (
-            Title("Videos - Segun Banji"),
+            Title(f"Videos - {OWNER['name']}"),
             portfolio_navbar("/videos"),
             page_banner(
                 "Videos",
@@ -139,5 +140,6 @@ def setup_videos_routes(app) -> None:
 
     @app.get("/videos/filter")
     def videos_filter(request: Request):
+        refresh_data()
         category = request.query_params.get("category", "all")
         return _filter_shell(category)

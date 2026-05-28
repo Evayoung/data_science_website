@@ -49,7 +49,7 @@ def page_shell(
     *content: Any,
     navbar: Any,
     footer: Any,
-    title: str = "Segun Banji — Data Analyst",
+    title: str = "Portfolio",
 ) -> tuple[Any, ...]:
     """
     Return the full page component tuple: navbar, *content, footer.

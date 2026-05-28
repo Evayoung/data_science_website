@@ -1,5 +1,5 @@
 """
-components/ui/footer.py — Shared portfolio footer.
+components/ui/footer.py - Shared portfolio footer.
 """
 from faststrap import FooterModern
 
@@ -12,11 +12,11 @@ def portfolio_footer() -> FooterModern:
         {
             "title": "Navigation",
             "links": [
-                {"text": "Home",    "href": "/"},
-                {"text": "About",   "href": "/about"},
-                {"text": "Works",   "href": "/works"},
-                {"text": "CV",      "href": "/cv"},
-                {"text": "Videos",  "href": "/videos"},
+                {"text": "Home", "href": "/"},
+                {"text": "About", "href": "/about"},
+                {"text": "Works", "href": "/works"},
+                {"text": "CV", "href": "/cv"},
+                {"text": "Videos", "href": "/videos"},
                 {"text": "Contact", "href": "/contact"},
             ],
         },
@@ -24,8 +24,8 @@ def portfolio_footer() -> FooterModern:
             "title": "Connect",
             "links": [
                 {"text": "LinkedIn", "href": OWNER["linkedin"]},
-                {"text": "GitHub",   "href": OWNER["github"]},
-                {"text": "Email",    "href": f"mailto:{OWNER['email']}"},
+                {"text": "GitHub", "href": OWNER["github"]},
+                {"text": "Email", "href": f"mailto:{OWNER['email']}"},
             ],
         },
     ]
@@ -36,11 +36,11 @@ def portfolio_footer() -> FooterModern:
     ]
 
     return FooterModern(
-        brand="Segun Banji",
-        tagline="Data Analyst & BI Expert — turning data into decisions.",
+        brand=OWNER["name"],
+        tagline=f"{OWNER['title']} - turning data into decisions.",
         columns=columns,
         social_links=social_links,
-        copyright_text="© 2026 Segun Banji. All rights reserved.",
+        copyright_text=f"(c) 2026 {OWNER['name']}. All rights reserved.",
         bg_variant="dark",
         text_variant="light",
         cls="portfolio-footer",

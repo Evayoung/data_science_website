@@ -9,7 +9,7 @@ from components.ui.layout import page_banner
 from components.ui.navbar import portfolio_navbar
 from data import (
     CERTIFICATIONS, EDUCATION, EXPERIENCE, OWNER,
-    SOCIAL_LINKS, SPECIALISATIONS, TOOLS,
+    SOCIAL_LINKS, SPECIALISATIONS, TOOLS, refresh_data,
 )
 
 
@@ -18,7 +18,7 @@ def _bio_section() -> Section:
         Div(
             Img(
                 src=OWNER.get("profile_image", ""),
-                alt="Segun Banji",
+                alt=OWNER["name"],
                 cls="portfolio-profile-photo mb-3",
             ),
             # Location
@@ -196,6 +196,7 @@ def _experience_education_section() -> Section:
 def setup_about_routes(app) -> None:
     @app.get("/about")
     def about_page():
+        refresh_data()
         nav = portfolio_navbar("/about")
         footer = portfolio_footer()
         banner = page_banner(
@@ -204,7 +205,7 @@ def setup_about_routes(app) -> None:
             breadcrumbs=[("Home", "/"), ("About", None)],
         )
         return (
-            Title("About Segun Banji — Data Analyst & BI Expert"),
+            Title(f"About {OWNER['name']} - {OWNER['title']}"),
             nav,
             banner,
             _bio_section(),

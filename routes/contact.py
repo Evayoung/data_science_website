@@ -16,7 +16,7 @@ from starlette.requests import Request
 from components.ui.footer import portfolio_footer
 from components.ui.layout import page_banner
 from components.ui.navbar import portfolio_navbar
-from data import OWNER, SOCIAL_LINKS
+from data import OWNER, SOCIAL_LINKS, refresh_data
 from services.supabase_data import save_contact_message
 
 
@@ -202,8 +202,9 @@ def _success_card(name: str) -> Div:
 def setup_contact_routes(app) -> None:
     @app.get("/contact")
     def contact_page():
+        refresh_data()
         return (
-            Title("Contact - Segun Banji"),
+            Title(f"Contact - {OWNER['name']}"),
             portfolio_navbar("/contact"),
             page_banner(
                 "Get in Touch",
@@ -230,6 +231,7 @@ def setup_contact_routes(app) -> None:
 
     @app.post("/contact/send")
     async def contact_send(request: Request):
+        refresh_data()
         form = await request.form()
         values = {
             "name": str(form.get("name", "")).strip(),

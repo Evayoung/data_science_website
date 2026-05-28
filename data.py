@@ -376,12 +376,65 @@ SOCIAL_LINKS = [
 
 DATA_SOURCE = "local"
 
+
+_REFRESHABLE_KEYS = (
+    "OWNER",
+    "STATS",
+    "SKILLS_FLAT",
+    "TOOLS",
+    "CV_SKILLS",
+    "EXPERIENCE",
+    "EDUCATION",
+    "CERTIFICATIONS",
+    "LANGUAGES",
+    "SOFT_SKILLS",
+    "SPECIALISATIONS",
+    "PROJECTS",
+    "WORKS_CATEGORIES",
+    "VIDEOS",
+    "VIDEO_CATEGORIES",
+    "SOCIAL_LINKS",
+)
+
+
+def _apply_loaded_data(loaded: dict) -> None:
+    """Update data objects in-place so route imports stay fresh."""
+    global DATA_SOURCE
+    DATA_SOURCE = loaded.get("DATA_SOURCE", DATA_SOURCE)
+    for key in _REFRESHABLE_KEYS:
+        if key not in loaded:
+            continue
+        current = globals().get(key)
+        incoming = loaded[key]
+        if isinstance(current, dict) and isinstance(incoming, dict):
+            current.clear()
+            current.update(incoming)
+        elif isinstance(current, list) and isinstance(incoming, list):
+            current[:] = incoming
+        else:
+            globals()[key] = incoming
+
+
+def refresh_data() -> bool:
+    """Refresh Supabase-backed data for warm serverless processes."""
+    try:
+        from services.supabase_data import load_portfolio_data
+
+        loaded = load_portfolio_data()
+        if not loaded:
+            return False
+        _apply_loaded_data(loaded)
+        return True
+    except Exception:
+        return False
+
+
 try:
     from services.supabase_data import load_portfolio_data
 
     _supabase_data = load_portfolio_data()
     if _supabase_data:
-        globals().update(_supabase_data)
+        _apply_loaded_data(_supabase_data)
 except Exception:
     # Keep the static fallback available if Supabase is unavailable at import time.
     DATA_SOURCE = "local"

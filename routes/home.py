@@ -149,6 +149,8 @@ def _showcase_section() -> Section:
 
 def _about_stats_section() -> Section:
     """Two-column: photo+bio snapshot (left) and 2×2 stat grid (right)."""
+    profile_image = OWNER.get("profile_image", "")
+    profile_alt_image = OWNER.get("profile_alt_image") or profile_image
     # Stats grid
     stats_grid = Div(
         Row(
@@ -180,7 +182,7 @@ def _about_stats_section() -> Section:
         Div(
             Img(
                 src=profile_alt_image,
-                alt="Segun Banji",
+                alt=OWNER["name"],
                 cls="portfolio-profile-photo mb-4",
                 loading="lazy",
             ),
